@@ -1,0 +1,23 @@
+body {
+    min-width: 500px;
+    max-width: 1200px;
+    background-color: lightgray;
+    margin: auto;
+}
+
+.border-3 {
+    border-width: 5px !important;
+    background-color: rgb(241, 241, 241);
+}
+
+@media(max-width: 900px) {
+    .border-3 {
+        width: 60% !important;
+    }
+}
+
+@media(max-width: 700px) {
+    .border-3 {
+        width: 70% !important;
+    }
+}

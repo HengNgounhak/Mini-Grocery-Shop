@@ -13,7 +13,56 @@
 </head>
 
 <body>
-    <h1>Sign In Page 123</h1>
+    <div class="container border border-3 border-dark mt-5 p-5 w-50">
+        <form class="needs-validation" action="http://localhost:5000/login" method="POST" novalidate>
+            <h2 class="mx-auto text-center w-85">Welcome to MINI-GROCERT-SHOP</h2>
+            <br>
+            <p class="mx-auto text-center text-secondary w-75">Enter your email address and password to access to continue</p>
+            <br>
+            <div class="form-group">
+                <label for="usr" class="font-weight-bold">Email Address</label>
+                <input class="form-control border border-5 border-secondary" type="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required name="email">
+                <div class="invalid-feedback">Please fill out this field correctly (example@example.com).</div>
+            </div>
+            <div class="form-group">
+                <label for="usr" class="font-weight-bold">Password</label>
+                <input class="form-control border border-5 border-secondary" autocomplete="password" minlength="8" type="password" id="Password" placeholder="Password" required name="password">
+                <div class="invalid-feedback">Please fill out this field correctly (password 8 digit up).</div>
+            </div>
+            <br>
+            <br>
+            <button type="submit" class="btn btn-primary btn-block font-weight-bold">Log In</button>
+        </form>
+
+    </div>
+    <div class="text-center p-3">
+        Don't have an account?
+        <a href="http://localhost:5000/signup">Sign Up</a>
+    </div>
+    <div class="text-center p-3 font-weight-bold">
+        2022 © MINI-GROCERT-SHOP by KIMTEPAMATAK
+    </div>
+
+    <script>
+        // Disable form submissions if there are invalid fields
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+                // Get the forms we want to add validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
 </body>
 
 </html>
