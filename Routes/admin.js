@@ -9,6 +9,9 @@ router.get('/productDetail', homeController.getProductDetail);
 
 router.get('/signin', authenController.signIn);
 router.get('/signup', authenController.signUp);
+router.post('/register', authenController.register);
+router.post('/login', authenController.login);
+router.post('/logout', authenController.logout);
 
 router.get('/admin', adminPanelController.adminPage);
 

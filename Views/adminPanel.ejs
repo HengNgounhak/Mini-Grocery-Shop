@@ -19,8 +19,299 @@
     <link rel="stylesheet" href="/Assets/Icons/fontawesome-free-5.15.1-web/css/all.css">
 </head>
 
-<body>
-    <h1>Admin Page</h1>
+<body class="d-flex flex-column mx-auto bg-light">
+    <div class="container mt-5">
+        <div class="float-left">Mini-Grocery-Store</div>
+        <div class="float-right d-flex flex-row align-items-center">
+            <a class="text-decoration-none" href="http://localhost:5000">
+                <i class="fas fa-user"></i>
+            </a>
+            <!--<span>&nbsp;|</span>
+            <form action="http://localhost:5000/logout" method="post">
+                <button class="border border-0 text-primary bg-light" type="submit" id="logout">Log Out</button>
+            </form>-->
+        </div>
+    </div>
+    <div class="d-flex flex-row align-items-end mx-auto mt-5 w-100 justify-content-end position-relative">
+        <div class="nav flex-column mt-2" id="tabList" role="tablist" aria-orientation="vertical">
+            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Product</a>
+            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Users</a>
+            <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Purchase</a>
+        </div>
+        <div class="tab-content p-4 bg-white" id="content">
+            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                <div class="float-left mb-5">All Products</div>
+                <div class="float-right">
+                    <button class="btn btn-primary border border-dark border-5" data-toggle="modal" data-target="#exampleModalCenter">Add Products</button>
+                </div>
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <form action="/addProduct" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h6 class="modal-title" id="exampleModalLongTitle">Add New Product</h6>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                                </div>
+                                <div class="modal-body">
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label class="font-weight-bold">Product Name</label>
+                                            <input type="text" class="form-control form-control-sm" id="name" placeholder="Name" name="name" required>
+                                            <div class="invalid-feedback">Please fill out this field</div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label class="font-weight-bold">Product Qty</label>
+                                            <input type="number" class="form-control form-control-sm" id="qty" placeholder="Qty" name="qty" required>
+                                            <div class="invalid-feedback">Please fill out this field</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label class="font-weight-bold">Type</label>
+                                            <select id="type" class="form-control form-control-sm" name="type" required>
+                                                <option selected></option>
+                                                <option>Grocery</option>
+                                                <option>Snack</option>
+                                                <option>Drink</option>
+                                                <option>Meat</option>
+                                            </select>
+                                            <div class="invalid-feedback">Please fill out this field</div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label class="font-weight-bold">Unit</label>
+                                            <select id="type" class="form-control form-control-sm" name="type" required>
+                                                <option selected></option>
+                                                <option>l</option>
+                                                <option>ml</option>
+                                                <option>pax</option>
+                                                <option>g</option>
+                                                <option>Kg</option>
+                                            </select>
+                                            <div class="invalid-feedback">Please fill out this field</div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label class="font-weight-bold">  Date</label>
+                                            <input type="text" id="date" class="form-control form-control-sm" name="date" required />
+                                            <div class="invalid-feedback">Please fill out this field</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row mb-0">
+                                        <div class="form-group col-md-6">
+                                            <label class="font-weight-bold">Price</label>
+                                            <input type="number" class="form-control form-control-sm" id="price" placeholder="Price" name="price" required>
+                                            <div class="invalid-feedback">Please fill out this field</div>
+                                            <label class="font-weight-bold mt-3">Discount Price(%)</label>
+                                            <input type="number" class="form-control form-control-sm" id="discountPrice" placeholder="Discount Price(%)" min="1" max="100" name="discountPrice" required>
+                                            <div class="invalid-feedback">Please fill out this field with integer number (1 to 100 only)</div>
+                                            <label class="font-weight-bold mt-3">Product Image</label>
+                                            <div class="input-group mb-3">
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" name="image" accept="image/png, image/jpeg" id="input-files" required>
+                                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                                    <div class="invalid-feedback">Please fill out this field</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6 text-center">
+                                            <img id="preview-images">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="font-weight-bold">Description</label>
+                                        <input type="text" class="form-control form-control-sm" id="detail" placeholder="Product Detail" name="detail" required>
+                                        <div class="invalid-feedback">Please fill out this field</div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" id="saveBtn" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <table class="table table-hover js-sort-table" id="demo2">
+                    <thead>
+                        <tr>
+                            <th class="js-sort-number text-center" id="col1">Picture</th>
+                            <th id="col2">Name</th>
+                            <th id="col6">Category</th>
+                            <th class="text-center" id="col3">Qty</th>
+                            <th id="col4">Description</th>
+                            <th class="js-sort-date" id="col5">Date add</th>
+                            <th id="col6">Unit</th>
+                            <th class="text-center" id="col7">Edit</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bodyTable">
+                        <tr>
+                            <th class="d-none" scope="row">1</th>
+                            <td><img src="/Public/Assets/Image/Food&Drink/drink/milk.jpeg" alt="coca"></td>
+                            <td>CocaCola</td>
+                            <td>Drink</td>
+                            <td>10</td>
+                            <td>A special drink</td>
+                            <td>30/02/2022</td>
+                            <td>500ml</td>
+                            <td>
+                                <i class="fas fa-edit"></i>
+                                <i class="fas fa-trash-alt"></i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="d-none" scope="row">1</th>
+                            <td><img src="/Public/Assets/Image/Food&Drink/drink/milk.jpeg" alt="coca"></td>
+                            <td>CocaCola</td>
+                            <td>Drink</td>
+                            <td>10</td>
+                            <td>A special drink</td>
+                            <td>30/02/2022</td>
+                            <td>500ml</td>
+                            <td>
+                                <i class="fas fa-edit"></i>
+                                <i class="fas fa-trash-alt"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                <table class="table table-hover js-sort-table" id="demo2">
+                    <thead>
+                        <tr>
+                            <th class="js-sort-number text-center" id="col1">Picture</th>
+                            <th id="col2">Name</th>
+                            <th id="col4">Phone Number</th>
+                            <th id="col6">Email Address</th>
+                            <th id="col5">Jobs</th>
+                            <th class="text-center" id="col7">Edit</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bodyTable">
+                        <tr>
+                            <th class="d-none" scope="row">1</th>
+                            <td><img src="/Public/Assets/Image/Vegetable/broccoli.jpeg" alt="User"></td>
+                            <td>Hak</td>
+                            <td>012345678</td>
+                            <td>hak@gmail.com</td>
+                            <td>Admin</td>
+                            <td>
+                                <i class="fas fa-edit"></i>
+                                <i class="fas fa-trash-alt"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                <table class="table table-hover js-sort-table" id="demo2">
+                    <thead>
+                        <tr>
+                            <th class="js-sort-number text-center" id="col1">Picture</th>
+                            <th id="col2">Name</th>
+                            <th id="col6">Category</th>
+                            <th class="text-center" id="col3">Qty</th>
+                            <th id="col4">Description</th>
+                            <th class="js-sort-date" id="col5">Date add</th>
+                            <th id="col6">Amount</th>
+                            <th class="text-center" id="col7">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bodyTable">
+                        <tr>
+                            <th class="d-none" scope="row">1</th>
+                            <td><img src="/Public/Assets/Image/Food&Drink/drink/milk.jpeg" alt="coca"></td>
+                            <td>CocaCola</td>
+                            <td>Drink</td>
+                            <td>1</td>
+                            <td>A special drink</td>
+                            <td>30/02/2022</td>
+                            <td>1$</td>
+                            <td>Success</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--<div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                <table class="table table-hover js-sort-table" id="demo2">
+                    <thead>
+                        <tr>
+                            <th class="js-sort-number text-center" id="col1">Picture</th>
+                            <th id="col2">Name</th>
+                            <th class="text-center" id="col3">Qty</th>
+                            <th id="col4">Detail</th>
+                            <th class="js-sort-date" id="col5">In stock at</th>
+                            <th id="col6">Category</th>
+                            <th class="text-center" id="col7">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bodyTable">
+                        <tr>
+                            <th class="d-none" scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>-->
+        </div>
+    </div>
+    <script>
+        // Date picker 
+        $("#date").datepicker().datepicker("setDate", new Date());
+        // Add the name of the file appear on file input
+        $(".custom-file-input").on("change", function() {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+
+
+        //for preview image when add product
+        $(document).ready(function() {
+            function previewImg(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        $('#preview-images').attr('src', e.target.result);
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+            $("#input-files").change(function() {
+                previewImg(this);
+            });
+        });
+
+        // Disable form submissions if there are invalid fields
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+                // Get the forms we want to add validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/Assets/JS/adminPanel.js"></script>
 </body>
 
 </html>
