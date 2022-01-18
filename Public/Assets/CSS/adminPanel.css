@@ -91,14 +91,16 @@ th {
 
 #col7 {
     width: 5%;
+    min-width: 20px !important;
+    white-space: nowrap;
 }
 
 
 /* for preview picture to add product */
 
-img {
-    max-height: 220px;
-    max-width: 320px;
+.preview-images {
+    max-height: 200px;
+    max-width: 200px;
 }
 
 @media (max-width: 1100px) {

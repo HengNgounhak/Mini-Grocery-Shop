@@ -16,11 +16,11 @@ exports.signUp = (req, res) => {
     }
 }
 
-exports.login = (req, res) => {
+exports.login = async (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
     // Check if email is exist
-    User.find({ email: email }).then(result => {
+    await User.find({ email: email }).then(result => {
         if (result != "") {
             console.log(result + email + password);
             // if user exist, check given password with the encrypted password
@@ -45,14 +45,14 @@ exports.login = (req, res) => {
     })
 }
 
-exports.register = (req, res) => {
+exports.register = async (req, res) => {
     const username = req.body.username;
     const email = req.body.email;
     const password = req.body.password;
     const isAdmin = false;
     const date = new Date();
     const salt = bcrypt.genSaltSync(10);
-    const user = new User({
+    await User({
         isAdmin: isAdmin,
         username: username,
         email: email,
