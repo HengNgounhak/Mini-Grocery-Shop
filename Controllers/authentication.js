@@ -16,7 +16,7 @@ exports.signUp = (req, res) => {
     }
 }
 
-exports.login = async (req, res) => {
+exports.login = async(req, res) => {
     const email = req.body.email;
     const password = req.body.password;
     // Check if email is exist
@@ -45,7 +45,7 @@ exports.login = async (req, res) => {
     })
 }
 
-exports.register = async (req, res) => {
+exports.register = async(req, res) => {
     const username = req.body.username;
     const email = req.body.email;
     const password = req.body.password;
@@ -69,4 +69,27 @@ exports.logout = (req, res) => {
     // clear session
     req.session.destroy();
     res.redirect('/');
+}
+
+exports.getUser = (req, res) => {
+    User.find()
+        .then(users => {
+            res.json(users);
+        })
+        .catch(err => {
+            console.log(err);
+        });
+}
+
+exports.deleteUser = (req, res) => {
+    const userId = req.params.userId;
+
+    User.findByIdAndRemove(userId)
+        .then((user) => {
+            console.log('User is deleted');
+            res.json({ "message": "success" });
+        })
+        .catch(err => {
+            console.log(err);
+        })
 }
