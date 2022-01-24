@@ -5,3 +5,8 @@ exports.getHomePage = (req, res) => {
 exports.getProductDetail = (req, res) => {
     res.render('productDetail');
 }
+
+exports.getPaymentPage = (req, res) => {
+    res.render('paymentpage');
+}
+
