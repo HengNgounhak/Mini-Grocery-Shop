@@ -70,8 +70,6 @@ exports.logout = (req, res) => {
     req.session.destroy();
     res.redirect('/');
 }
-<<<<<<< HEAD
-=======
 
 exports.getUser = (req, res) => {
     User.find()
@@ -95,4 +93,3 @@ exports.deleteUser = (req, res) => {
             console.log(err);
         })
 }
->>>>>>> origin/amatak
