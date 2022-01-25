@@ -35,12 +35,12 @@ document.querySelector('#menu-btn').onclick = () =>{
     loginForm.classList.remove('active');
 }
 
-window.onscroll = () =>{
-    searchForm.classList.remove('active');
-    shoppingCart.classList.remove('active');
-    loginForm.classList.remove('active');
-    navbar.classList.remove('active');
-}
+// window.onscroll = () =>{
+//     searchForm.classList.remove('active');
+//     shoppingCart.classList.remove('active');
+//     loginForm.classList.remove('active');
+//     navbar.classList.remove('active');
+// }
 
 var swiper = new Swiper(".product-slider", {
     loop:true,
@@ -83,3 +83,34 @@ var swiper = new Swiper(".review-slider", {
       },
     },
 });
+
+async function getProduct() {
+  await axios.get('/getProduct')
+      .then(products => {
+          // console.log(products)
+          let parentPost = document.getElementById("listProducts");
+          products.data.forEach(element => {
+              var childPost = document.createElement("div");
+              childPost.setAttribute("class", "box");
+              childPost.innerHTML = `
+                <img src="/Assets/uploadImage/${element._id}" alt="">
+                <h3>${element.name}</h3>
+                <div class="price">$${element.price} </div>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <a href="#" class="btn">add to cart</a>
+              `;
+              parentPost.appendChild(childPost);
+          })
+      })
+      .catch((err) => {
+          console.log(err)
+      })
+}
+
+getProduct();

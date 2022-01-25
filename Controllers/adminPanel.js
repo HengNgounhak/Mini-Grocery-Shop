@@ -66,10 +66,8 @@ exports.addProduct = async (req, res) => {
 }
 
 exports.getProduct = (req, res) => {
-    //get todo
     Product.find()
         .then(posts => {
-            // console.log(posts);
             res.json(posts);
         })
         .catch(err => {
@@ -78,7 +76,6 @@ exports.getProduct = (req, res) => {
 }
 
 exports.deleteProduct = (req, res) => {
-    //delete todo
     const postId = req.params.postId;
 
     Product.findByIdAndRemove(postId)
@@ -86,7 +83,7 @@ exports.deleteProduct = (req, res) => {
             const path = __dirname + '/../Public/Assets/uploadImage/' + product._id;
             try {
                 fs.unlinkSync(path)
-                    //file removed
+                //file removed
             } catch (err) {
                 console.error(err)
             }
@@ -116,7 +113,7 @@ exports.updateProduct = (req, res) => {
                 const path = __dirname + '/../Public/Assets/uploadImage/' + postId;
                 try {
                     fs.unlinkSync(path)
-                        //file removed
+                    //file removed
                 } catch (err) {
                     console.error(err)
                 }
