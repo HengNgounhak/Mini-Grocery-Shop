@@ -12,6 +12,8 @@ router.get('/signup', authenController.signUp);
 router.post('/register', authenController.register);
 router.post('/login', authenController.login);
 router.post('/logout', authenController.logout);
+router.get('/getUser', authenController.getUser);
+router.delete('/deleteUser/:userId', authenController.deleteUser);
 
 router.get('/admin', adminPanelController.adminPage);
 router.post('/addProduct', adminPanelController.addProduct);
