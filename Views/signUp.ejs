@@ -9,11 +9,78 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="/Assets/CSS/signUp.css">
+    <link rel="stylesheet" href="/Assets/CSS/authen.css">
+    <link rel="stylesheet" href="/Assets/Icons/fontawesome-free-5.15.1-web/css/all.css">
 </head>
 
 <body>
-    <h1>Sign Up Page</h1>
+    <div class="container border border-3 border-dark mt-4">
+        <form class="needs-validation" action="/register" method="POST" oninput='confirmPassword.setCustomValidity(confirmPassword.value != password.value ? document.getElementById("pw").innerHTML = "Passwords are not same" : "")' novalidate>
+            <!-- <h3 class="mx-auto text-center w-85 mb-3">MINI GROCERY STORE</h3> -->
+            <div class="text-center mb-3"><a href="/" class="logo text-decoration-none"> <i class="fas fa-shopping-basket"></i> Mini Grocery Shop</a></div>
+
+            <p class="mx-auto mb-3 text-center text-secondary w-75">Don't have an account? Create your own account, it take less than a minute.</p>
+            <div class="form-group">
+                <label for="usr">Username</label>
+                <input type="text" class="form-control" minlength="3" id="usr" required name="username">
+                <div class="invalid-feedback">Please fill out this field (at least 3 letter).</div>
+            </div>
+            <div class="form-group">
+                <label for="usr">Email address</label>
+                <input class="form-control" type="email" id="exampleInputEmail1" aria-describedby="emailHelp" required name="email">
+                <div class="invalid-feedback">Please fill out this field correctly (example@example.com).</div>
+            </div>
+            <div class="form-group">
+                <label for="usr">Password</label>
+                <input class="form-control" autocomplete="password" type="password" minlength="8" id="enterPassword" name="password" required>
+                <div class="invalid-feedback">Please fill out this field correctly (password 8 digit up).</div>
+            </div>
+            <div class="form-group">
+                <label for="usr">Confirm Password</label>
+                <input class="form-control" autocomplete="password" type="password" minlength="8" id="confirmPassword" name="confirmPassword" required name="password">
+                <div class="invalid-feedback" id="pw">Please fill out this field correctly (password 8 digit up).</div>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck" required>
+                <label class="form-check-label" for="gridCheck">
+                    I accept Terms and Conditions.
+                </label>
+                <div class="invalid-feedback">You need to agree with our accept Terms and Conditions.</div>
+            </div>
+            <br>
+            <div class="text-center">
+                <button type="submit" class="btn btn-light py-3 px-5 rounded-pill font-weight-bold min-w-25">SIGN UP</button>
+            </div>
+        </form>
+    </div>
+    <div class="text-center p-3">
+        Already have an account?
+        <a href="/signin">Sign In</a>
+    </div>
+    <div class="text-center p-3 font-weight-bold">
+        2022 © MINI GROCERT SHOP
+    </div>
+
+    <script>
+        // Disable form submissions if there are invalid fields
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+                // Get the forms we want to add validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
 </body>
 
 </html>

@@ -26,11 +26,11 @@ const productSchema = new Schema({
         type: Number,
         required: true
     },
-    image: {
+    description: {
         type: String,
         required: true
     },
-    detail: {
+    unit: {
         type: String,
         required: true
     }

@@ -9,11 +9,63 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="/Assets/CSS/signIn.css">
+    <link rel="stylesheet" href="/Assets/CSS/authen.css">
+    <link rel="stylesheet" href="/Assets/Icons/fontawesome-free-5.15.1-web/css/all.css">
 </head>
 
 <body>
-    <h1>Sign In Page 123</h1>
+    <div class="container border border-3 border-dark mt-5">
+        <form class="needs-validation" action="/login" method="POST" novalidate>
+            <!-- <h3 class="mx-auto text-center w-85 mb-3">MINI GROCERY STORE</h3> -->
+            <div class="text-center mb-3"><a href="/" class="logo text-decoration-none"> <i class="fas fa-shopping-basket"></i> Mini Grocery Shop</a></div>
+            
+            <p class="mx-auto text-center text-secondary w-75 mb-5">Enter your email address and password to access to continue</p>
+            <div class="form-group">
+                <label for="usr">Email Address</label>
+                <input class="form-control" type="email" id="exampleInputEmail1" aria-describedby="emailHelp" required name="email">
+                <div class="invalid-feedback">Please fill out this field correctly (example@example.com).</div>
+            </div>
+            <div class="form-group">
+                <label for="usr" class="mt-3">Password</label>
+                <input class="form-control" autocomplete="password" minlength="8" type="password" id="Password" required name="password">
+                <div class="invalid-feedback">Please fill out this field correctly (password 8 digit up).</div>
+            </div>
+            <br>
+            <br>
+            <div class="text-center">
+                <button type="submit" class="btn btn-light py-3 px-5 rounded-pill font-weight-bold min-w-25">SIGN IN</button>
+            </div>
+        </form>
+
+    </div>
+    <div class="text-center p-3">
+        Don't have an account?
+        <a href="/signup">Sign Up</a>
+    </div>
+    <div class="text-center p-3 font-weight-bold">
+        2022 © MINI GROCERT SHOP
+    </div>
+
+    <script>
+        // Disable form submissions if there are invalid fields
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+                // Get the forms we want to add validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
 </body>
 
 </html>

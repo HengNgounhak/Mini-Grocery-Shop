@@ -15,5 +15,9 @@ router.post('/login', authenController.login);
 router.post('/logout', authenController.logout);
 
 router.get('/admin', adminPanelController.adminPage);
+router.post('/addProduct', adminPanelController.addProduct);
+router.get('/getProduct', adminPanelController.getProduct);
+router.delete('/deleteProduct/:postId', adminPanelController.deleteProduct);
+router.post('/updateProduct/:postId', adminPanelController.updateProduct);
 
 module.exports = router;
