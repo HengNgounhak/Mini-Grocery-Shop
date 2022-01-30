@@ -266,22 +266,22 @@ form{
     padding: 20px;
     box-shadow: 0 4px 8px 0 #30475e, 0 4px 8px 0 #30475e;
     color: rgb(0, 0, 0);
-    background-color: lightgray;
+    background-color: rgb(224, 223, 223);
+    border-radius: 5%;
 }
 h5{
     text-align: center;
+    font-weight: bold;
 }
 
 .div1{
     display: inline-block;
-    
 }
-.box2{
-    border: none;
-    border-radius: 15px;
-    padding: 10px;
-    margin: 10px 0 15px 0;
-    background-color: #30475e;
+.ccenter {
+    text-align: center;
+}
+.body1 {
+    
 }
 .center {
     display: flex;
