@@ -5,3 +5,6 @@ exports.getHomePage = (req, res) => {
 exports.getProductDetail = (req, res) => {
     res.render('productDetail');
 }
+exports.getcheckDetail = (req, res) => {
+    res.render('checkDetail');
+}

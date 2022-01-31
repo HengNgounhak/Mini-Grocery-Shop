@@ -6,7 +6,7 @@ const adminPanelController = require("../Controllers/adminPanel");
 
 router.get('/', homeController.getHomePage);
 router.get('/productDetail', homeController.getProductDetail);
-
+router.get('/checkDetail', homeController.getcheckDetail);
 router.get('/signin', authenController.signIn);
 router.get('/signup', authenController.signUp);
 
