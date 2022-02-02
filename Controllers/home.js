@@ -2,6 +2,10 @@ exports.getHomePage = (req, res) => {
     res.render('homePage');
 }
 
-exports.getProductDetail = (req, res) => {
-    res.render('productDetail');
+exports.getProductPage = (req, res) => {
+    res.render('productPage');
+}
+
+exports.payment = (req, res) => {
+    res.render('payment');
 }

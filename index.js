@@ -22,7 +22,7 @@ app.use(session({
     cookie: {
         path: '/',
         httpOnly: true,
-        maxAge: 1000 * 60 * 60, // 1h expire
+        maxAge: 1000 * 60 * 60 * 24, // 1day expire
         sameSite: true,
         secure: false
     },

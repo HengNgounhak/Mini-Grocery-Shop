@@ -101,7 +101,7 @@ async function getProduct() {
         .then(products => {
             // render data from server
             // console.log(posts)
-            let parentPost = document.getElementById("bodyTable");
+            let parentPost = document.getElementById("productTable");
             products.data.forEach(element => {
                 var childPost = document.createElement("tr");
                 childPost.setAttribute("class", element._id);
@@ -144,10 +144,10 @@ async function getProduct() {
                                     <div class="form-group col-md-6">
                                         <label class="font-weight-bold">Type</label>
                                         <select id="type${element._id}" class="form-control form-control-sm" name="type" required>
-                                            <option ${ element.type == "Ingredient" ? '':'selected'}>Ingredient</option>
-                                            <option ${ element.type == "Vegetable" ? '':'selected'}>Vegetable</option>
-                                            <option ${ element.type == "Fruit" ? '':'selected'}>Fruit</option>
+                                            <option ${ element.type == "Food" ? '':'selected'}>Food</option>
                                             <option ${ element.type == "Drink" ? '':'selected'}>Drink</option>
+                                            <option ${ element.type == "Ingredient" ? '':'selected'}>Ingredient</option>
+                                            <option ${ element.type == "Fruit & Vegetable" ? '':'selected'}>Fruit & Vegetable</option>
                                             <option ${ element.type == "Meat & Seafood" ? '':'selected'}>Meat & Seafood</option>
                                         </select>
                                         <div class="invalid-feedback">Please fill out this field</div>
@@ -161,13 +161,13 @@ async function getProduct() {
                                 </div>
                                 <div class="form-row mb-0">
                                     <div class="form-group col-md-6">
-                                        <label class="font-weight-bold">Price</label>
+                                        <label class="font-weight-bold">Price($)</label>
                                         <input type="number" class="form-control form-control-sm" id="price${element._id}"
                                             value="${element.price}" placeholder="Price" name="price" required>
                                         <div class="invalid-feedback">Please fill out this field</div>
                                         <label class="font-weight-bold mt-3">Discount Price(%)</label>
                                         <input type="number" class="form-control form-control-sm" id="discountPrice${element._id}"
-                                            value="${element.price}" placeholder="Discount Price(%)" min="1" max="100"
+                                            value="${element.price}" placeholder="Discount Price(%)" inputmode="decimal" min="0" max="100"
                                             name="discountPrice" required>
                                         <div class="invalid-feedback">Please fill out this field with integer number (1 to 100 only)
                                         </div>
@@ -209,4 +209,31 @@ async function getProduct() {
         })
 }
 
+async function getUser() {
+    await axios.get('/getUser')
+        .then(users => {
+            // render data from server
+            // console.log(posts)
+            let parentPost = document.getElementById("userTable");
+            users.data.forEach(element => {
+                var childPost = document.createElement("tr");
+                childPost.setAttribute("class", element._id);
+                childPost.innerHTML = `
+                    <td>${element.username}</td>
+                    <td>${element.email}</td>
+                    <td>${element.isAdmin ? "Admin": "Normal"}</td>
+                    <td>
+                        <i class="fas fa-edit"></i>
+                        <i class="fas fa-trash-alt"></i>
+                    </td>
+                `;
+                parentPost.appendChild(childPost);
+            })
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+}
+
 getProduct();
+getUser();

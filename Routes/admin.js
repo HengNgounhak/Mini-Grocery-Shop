@@ -5,7 +5,8 @@ const authenController = require("../controllers/authentication");
 const adminPanelController = require("../Controllers/adminPanel");
 
 router.get('/', homeController.getHomePage);
-router.get('/productDetail', homeController.getProductDetail);
+router.get('/product', homeController.getProductPage);
+router.get('/payment', homeController.payment);
 
 router.get('/signin', authenController.signIn);
 router.get('/signup', authenController.signUp);

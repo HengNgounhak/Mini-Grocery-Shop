@@ -102,10 +102,10 @@
                                                     <label class="font-weight-bold">Type</label>
                                                     <select id="type" class="form-control form-control-sm" name="type"
                                                         required>
-                                                        <option selected>Ingredient</option>
-                                                        <option>Vegetable</option>
-                                                        <option>Fruit</option>
+                                                        <option selected>Food</option>
                                                         <option>Drink</option>
+                                                        <option>Ingredient</option>
+                                                        <option>Fruit & Vegetable</option>
                                                         <option>Meat & Seafood</option>
                                                     </select>
                                                     <div class="invalid-feedback">Please fill out this field</div>
@@ -119,16 +119,16 @@
                                             </div>
                                             <div class="form-row mb-0">
                                                 <div class="form-group col-md-6">
-                                                    <label class="font-weight-bold">Price</label>
+                                                    <label class="font-weight-bold">Price($)</label>
                                                     <input type="number" class="form-control form-control-sm" id="price"
                                                         placeholder="Price" name="price" required>
                                                     <div class="invalid-feedback">Please fill out this field</div>
                                                     <label class="font-weight-bold mt-3">Discount Price(%)</label>
                                                     <input type="number" class="form-control form-control-sm"
-                                                        id="discountPrice" placeholder="Discount Price(%)" min="1"
-                                                        max="100" name="discountPrice" required>
+                                                        id="discountPrice" placeholder="Discount Price(%)" value="0" min="0"
+                                                        step="any" max="100" name="discountPrice" required>
                                                     <div class="invalid-feedback">Please fill out this field with
-                                                        integer number (1 to 100 only)</div>
+                                                        integer number (0 to 100 only)</div>
                                                     <label class="font-weight-bold mt-3">Product Image</label>
                                                     <div class="input-group mb-3">
                                                         <div class="custom-file">
@@ -155,7 +155,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
-                                                data-dismiss="modal">Close</button>
+                                                data-dismiss="modal" onclick="document.location.href = '/admin'">Close</button>
                                             <button type="submit" id="saveBtn" class="btn btn-primary">Save
                                                 changes</button>
                                         </div>
@@ -181,8 +181,8 @@
                                 <th class="text-center text-nowrap">Edit</th>
                             </tr>
                         </thead>
-                        <tbody id="bodyTable">
-                            <tr class="text-base">
+                        <tbody id="productTable">
+                            <!-- <tr class="text-base">
                                 <td class="text-nowrap text-center"><img src="/Assets/Image/Food&Drink/drink/milk.jpeg"
                                         style="max-width:60px; max-height:60px"></td>
                                 <td class="text-nowrap align-middle">Milk</td>
@@ -197,29 +197,24 @@
                                     <i class="fas fa-edit"></i>
                                     <i class="fas fa-trash-alt"></i>
                                 </td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
                 </div>
             </div>
             <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                <table class="table table-hover js-sort-table" id="demo2">
+                <table class="table table-hover js-sort-table text-nowrap" id="demo2">
                     <thead>
                         <tr>
-                            <th class="js-sort-number text-center" id="col1">Picture</th>
-                            <th id="col2">Name</th>
-                            <th id="col4">Phone Number</th>
-                            <th id="col6">Email Address</th>
-                            <th id="col5">Jobs</th>
+                            <th>Name</th>
+                            <th>Email Address</th>
+                            <th>Type</th>
                             <th class="text-center" id="col7">Edit</th>
                         </tr>
                     </thead>
-                    <tbody id="bodyTable">
+                    <tbody id="userTable">
                         <tr>
-                            <th class="d-none" scope="row">1</th>
-                            <td><img src="/Assets/Image/Vegetable/broccoli.jpeg" alt="User"></td>
                             <td>Hak</td>
-                            <td>012345678</td>
                             <td>hak@gmail.com</td>
                             <td>Admin</td>
                             <td>
