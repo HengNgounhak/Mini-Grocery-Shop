@@ -9,3 +9,7 @@ exports.getProductPage = (req, res) => {
 exports.payment = (req, res) => {
     res.render('payment');
 }
+exports.getPaymentPage = (req, res) => {
+    res.render('paymentpage');
+}
+

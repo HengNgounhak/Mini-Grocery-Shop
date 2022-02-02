@@ -253,3 +253,47 @@ table#demo2.js-sort-8 tbody tr td:nth-child(9),
 table#demo2.js-sort-9 tbody tr td:nth-child(10) {
     background: #dee;
 }
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color:  #ffffff;
+    font-family: 'Montserrat', sans-serif;
+}
+form{
+    width: 600px;
+    margin: 100px auto  0 auto;
+    padding: 20px;
+    box-shadow: 0 4px 8px 0 #30475e, 0 4px 8px 0 #30475e;
+    color: rgb(0, 0, 0);
+    background-color: rgb(224, 223, 223);
+    border-radius: 5%;
+}
+h5{
+    text-align: center;
+    font-weight: bold;
+}
+
+.div1{
+    display: inline-block;
+}
+.ccenter {
+    text-align: center;
+}
+.body1 {
+    
+}
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn{
+    width: 30%;
+    padding: 10px;
+    border: none;
+    border-radius: 15px;
+    background-color: #ffffff;
+    font-size: 18px;
+    color: rgb(0, 0, 0);
+}
