@@ -26,7 +26,7 @@ app.use(session({
         sameSite: true,
         secure: false
     },
-    secret: "this is a secret key",
+    secret: process.env.SESSION_SECRET,
     name: 'sid'
 }));
 
@@ -35,7 +35,7 @@ app.use(express.json());
 
 app.use(routes);
 
-mongoose.connect('mongodb+srv://user1:User1234@cluster0.cqgou.mongodb.net/Grocery?retryWrites=true&w=majority')
+mongoose.connect(process.env.MONGODB_URL)
     .then(result => {
         console.log("Db is connected");
         app.listen(port);

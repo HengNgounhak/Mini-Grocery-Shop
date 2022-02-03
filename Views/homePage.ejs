@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Mini Grocery Shop</title>
+    <title>Mini Gocery Store</title>
 
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 
@@ -68,14 +68,16 @@
                 </div>
             </div> -->
             <div class="total" id="totalCart"> </div>
-            <a href="#" class="btn">checkout</a>
+            <a href="/payment" class="btn">checkout</a>
         </div>
 
         <form action="" class="login-form">
-            <h1><i class="fas fa-user-circle"></i></h1>
-            <h4>User Name</h4>
-            <p>email@example.com</p>
-            <input type="submit" value="login now" class="btn">
+            <% if(user){ %>
+                <h1><i class="fas fa-user-circle"></i></h1>
+                <h4><%= user.username %></h4>
+                <p><%= user.email %></p>
+                <input value="login now" class="btn" onclick="logoutUser()">
+            <% } %>
         </form>
 
     </header>

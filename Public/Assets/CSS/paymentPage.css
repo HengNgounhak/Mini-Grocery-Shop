@@ -1,0 +1,167 @@
+.btn{
+    margin-top: 1rem;
+    display: inline-block;
+    padding:.8rem 3rem;
+    font-size: 1.7rem;
+    border-radius: .5rem;
+    border:.2rem solid var(--black);
+    color:var(--black);
+    cursor: pointer;
+    background: white;
+    border-color: rgb( 0, 0, 0, 0.2)
+}
+
+.btn:hover{
+    background: var(--orange);
+    color:#fff;
+}
+
+.item-container {
+  position: fixed;
+  top: 8.5rem;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: calc(100vh - 8.5rem);
+  background: #eee;
+  overflow-y: scroll;
+  padding-bottom: 8rem;
+}
+
+/* .item-container{
+  display: block;
+} */
+
+.item-container::-webkit-scrollbar {
+  width: 1rem;
+}
+
+.item-container::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+.item-container::-webkit-scrollbar-thumb {
+  background: #130f40;
+  border-radius: 5rem;
+}
+
+.item-container .title {
+
+  color:var(--orange);
+  font-size: 2.5rem;
+  padding: 1rem;
+  color: #df7219;
+  border-bottom: 0.1rem solid rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.item-container .list-product {
+    background: #fff;
+  border: 0.1rem solid rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  -webkit-animation: fadeUp .4s linear;
+          animation: fadeUp .4s linear;
+}
+
+.item-container .list-product .box-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(30rem, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+.item-container .list-product .box-container .box {
+  border-radius: .5rem;
+  background: #f7f7f7;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  position: relative;
+}
+
+.item-container .list-product .box-container .box .fa-times {
+  position: absolute;
+  top: .7rem;
+  right: 1rem;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #130f40;
+}
+
+.item-container .list-product .box-container .box .fa-times:hover {
+  color: #27ae60;
+}
+
+.item-container .list-product .box-container .box img {
+  max-height: 8rem;
+  max-width: 8rem;
+}
+
+.item-container .list-product .box-container .box .content h3 {
+  font-size: 1.75rem;
+  color: #130f40;
+}
+
+.item-container .list-product .box-container .box .content span {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.item-container .list-product .box-container .box .content span.price {
+  color: #27ae60;
+  font-size: 1.2rem;
+}
+
+.item-container .list-product .box-container .box .content input {
+  width: 8rem;
+  padding: .5rem 1.2rem;
+  font-size: 1.2rem;
+  color: #130f40;
+  margin: .7rem 0;
+}
+
+.item-container .cart-total {
+  margin-top: 2rem;
+  border: 0.1rem solid rgba(0, 0, 0, 0.2);
+  border-radius: .5rem;
+  -webkit-animation: fadeUp .4s linear .4s backwards;
+          animation: fadeUp .4s linear .4s backwards;
+}
+
+.item-container .cart-total .box {
+  padding: 1.5rem;
+}
+
+.item-container .cart-total .box h3 {
+  color: #130f40;
+  font-size: 2rem;
+  padding-bottom: .7rem;
+}
+
+.item-container .cart-total .box h3 span {
+  color: #27ae60;
+}
+
+h5 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.button {
+    background-color: white !important;
+    text-decoration: none;
+    color: black;
+}
+
+.button:hover {
+    background-color: gray !important;
+    color: white !important;
+    text-decoration: none;
+}

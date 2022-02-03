@@ -1,53 +1,65 @@
 // const User = require('../models/users');
 const Product = require('../Models/products');
 const Purchase = require('../Models/purchases');
-const fs = require('fs');
 
-exports.addPurchae = async (req, res) => {
-    const userId = req.body.userId;
+exports.addPurchase = async (req, res) => {
+    const userId = req.session.userId;
     const products = req.body.products;
     const date = new Date().toISOString().split("T")[0];
-    let canPurchase = false;
-
-    for(const i in products){
-        try {
-            Product.findOne({ _id: products[i]._id }).then(product => {
+    let outOfStock = [];
+    try {
+        //check if products in stock
+        for(const i in products){
+            await Product.findOne({ _id: products[i].id }).then(product => {
                 if (product) {
-                    if(product.qty >= products[i].amount){
-                        canPurchase = true
-                    } else {
-                        canPurchase = false
-                        break
-                    }
-                } else {
-                    canPurchase = false
-                    break
-                }
+                    if(product.qty < products[i].qty){
+                        outOfStock.push({
+                            name: product.name,
+                            qty: product.qty
+                        })
+                    } 
+                } 
             }).catch(err => {
                 console.log(err);
-                canPurchase = false
-                break
             })
-        } catch (err) {
-            console.log(err);
-            canPurchase = false
-            break
         }
-        
+    } catch (err) {
+        console.log(err);
     }
 
-    if(canPurchase) {
+    if((outOfStock.length ==0) && products) {
+        for(const i in products){
+            await Product.findByIdAndUpdate({ _id: products[i].id }).then(product => {
+                if (product) {
+                    product.qty -= products[i].qty
+                    return product.save();
+                } 
+            }).catch(err => {
+                console.log(err);
+            })
+        }
+
         const purchase = new Purchase({
+            totalCost: req.body.totalCost,
+            username: req.session.username,
             userId: userId,
             products: products,
             buyAt: date
         });
 
         await purchase.save().then((result) => {
-            res.redirect('/');
+            res.json({
+                success: true
+            });
+            console.log("purchase success")
         }).catch((err) => {
             console.log(err);
         }) 
+    } else {
+        res.json({
+            success: false,
+            outOfStock: outOfStock
+        })
     }
 }
 
@@ -82,7 +94,7 @@ exports.updatePurchase = (req, res) => {
             purchase.products = products
             console.log('Purchase is updated');
             res.send(true);
-            return Purchase.save();
+            return purchase.save();
         })
         .catch(err => {
             console.log(err);

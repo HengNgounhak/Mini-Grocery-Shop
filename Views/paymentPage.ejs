@@ -1,71 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Mini Gocery Store</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="Assets/CSS/adminPanel.css">
-
-    <link href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" rel="stylesheet" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-
-    <script type="text/javascript" src="/Assets/JS/sort-table.js"></script>
     <link rel="stylesheet" href="/Assets/Icons/fontawesome-free-5.15.1-web/css/all.css">
+    <link rel="stylesheet" href="/Assets/CSS/homePage.css">
+    <link rel="stylesheet" href="/Assets/CSS/paymentPage.css">
 </head>
 <body>
-    <body>
-        <form action="action">
-            <h5>MINI GROCERY STORE</h5>
-            <br>
-                        <table class="table table-hover js-sort-table" id="demo2">
-                            <thead>
-                                <tr class="ccenter">
-                                    <th class="js-sort-number text-center" id="col8">Product</th>                                  
-                                    <th id="col3">Price</th>
-                                    <th id="col3">Quality</th>
-                                    <th id="col4">Total</th>
-                                    <th id="col5">Edit</th>
-                                </tr>
-                            </thead>
-                            <tbody id="bodyTable">
-                                <tr class="ccenter">
-                                    <th class="d-none" scope="row">1</th>
-                                    <td><img src="/Assets/Image/Vegetable/broccoli.jpeg" style="max-width: 40px; max-height: 40px;" alt="Shrimp"></td>
-                                    <td>5$</td>
-                                    <td>4</td>
-                                    <td>20$</td>
-                                    <td>
-                                        <i class="fas fa-trash-alt"></i>
-                                    </td>
-                                </tr>
-                            </tbody>
-                            <tbody id="bodyTable">
-                                <tr class="ccenter">
-                                    <th class="d-none" scope="row">1</th>
-                                    <td><img src="/Assets/Image/Vegetable/broccoli.jpeg" style="max-width: 40px; max-height: 40px;" alt="Shrimp"></td>
-                                    <td>5$</td>
-                                    <td>4</td>
-                                    <td>20$</td>
-                                    <td>
-                                        <i class="fas fa-trash-alt"></i>
-                                    </td>
-                                </tr>
-                            </tbody>
-                            
-                        </table>
+
+    <!-- header section starts  -->
+
+    <header class="header">
+
+        <a href="/" class="logo"> <i class="fas fa-shopping-basket"></i> Mini Grocery Store</a>
+
+    </header>
+
+    <!-- header section ends -->
+
+    <section class="item-container">
+
+        <div class="list-product">
+
+            <h3 class="title">Your Products</h3>
+
+            <div class="box-container" id="listItem">
+
+                <!-- <div class="box">
+                    <i class="fas fa-times"></i>
+                    <img src="/Assets/Image/New&Image/product-2.png" alt="">
+                    <div class="content">
+                        <h3>delicious food</h3>
+                        <span> Quantity : </span>
+                        <input type="number" name="" value="1" id="">
                         <br>
-                        <h5>Total:</h5>
-                        <h5>40$</h5>
-            <div class="center">
-            <button class="btn" type="button">Confirm</button>
+                        <span> Price : </span>
+                        <span class="text-success"> $40.00 </span>
+                        <span class="text-danger">(10% off)</span>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <i class="fas fa-times"></i>
+                    <img src="/Assets/Image/New&Image/product-3.png" alt="">
+                    <div class="content">
+                        <h3>delicious food</h3>
+                        <span> quantity : </span>
+                        <input type="number" name="" value="1" id="">
+                        <br>
+                        <span> price : </span>
+                        <span class="price"> $40.00 </span>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <i class="fas fa-times"></i>
+                    <img src="/Assets/Image/New&Image/product-4.png" alt="">
+                    <div class="content">
+                        <h3>delicious food</h3>
+                        <span> quantity : </span>
+                        <input type="number" name="" value="1" id="">
+                        <br>
+                        <span> price : </span>
+                        <span class="price"> $40.00 </span>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <i class="fas fa-times"></i>
+                    <img src="/Assets/Image/New&Image/product-5.png" alt="">
+                    <div class="content">
+                        <h3>delicious food</h3>
+                        <span> quantity : </span>
+                        <input type="number" name="" value="1" id="">
+                        <br>
+                        <span> price : </span>
+                        <span class="price"> $40.00 </span>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <i class="fas fa-times"></i>
+                    <img src="/Assets/Image/New&Image/product-6.png" alt="">
+                    <div class="content">
+                        <h3>delicious food</h3>
+                        <span> quantity : </span>
+                        <input type="number" name="" value="1" id="">
+                        <br>
+                        <span> price : </span>
+                        <span class="price"> $40.00 </span>
+                    </div>
+                </div> -->
+
             </div>
-        </form>
-    </body>
+            <hr>
+            <div class="box-container">
+                <div class="d-flex justify-content-end">
+                    <div>
+                        <h5>Total ($) </h5>
+                        <h5>Get From Costomer ($) </h5>
+                        <h5>Give Costomer back ($) </h5>
+                    </div>
+                    <div class="ml-2" style="min-width: 50px;">
+                        <h5 class="text-success" id="TotalCost">: </h5>
+                        <h5 class="text-success">: <input type="number" id="customerMoney" value="0.00" style="width: 100px;" onchange="calculatePay()"></h5>
+                        <h5 class="text-danger" id="payback">: 0.00</h5>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="d-flex justify-content-end mt-2">
+            <a href="/" class="btn">Back</a>
+            <button class="btn ml-3" id="payNow" onclick="purchase()">Pay Now</button>
+        </div>
+
+    </section>
+    <!-- toast -->
+    <div id="toasts"></div>
+    <button data-type="types" data-kind="error" id="errorPayment">Error</button>
+
+    <!-- products section ends -->
+
+    <section class="footer">
+
+        <div class="box-container">
+
+            <div class="box">
+                <h3> groco <i class="fas fa-shopping-basket"></i> </h3>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam, saepe.</p>
+                <div class="share">
+                    <a href="#" class="fab fa-facebook-f"></a>
+                    <a href="#" class="fab fa-twitter"></a>
+                    <a href="#" class="fab fa-instagram"></a>
+                    <a href="#" class="fab fa-linkedin"></a>
+                </div>
+            </div>
+
+            <div class="box">
+                <h3>contact info</h3>
+                <a href="#" class="links"> <i class="fas fa-phone"></i> +123-456-7890 </a>
+                <a href="#" class="links"> <i class="fas fa-phone"></i> +111-222-3333 </a>
+                <a href="#" class="links"> <i class="fas fa-envelope"></i> shaikhanas@gmail.com </a>
+                <a href="#" class="links"> <i class="fas fa-map-marker-alt"></i> mumbai, india - 400104 </a>
+            </div>
+
+            <div class="box">
+                <h3>quick links</h3>
+                <a href="#" class="links"> <i class="fas fa-arrow-right"></i> home </a>
+                <a href="#" class="links"> <i class="fas fa-arrow-right"></i> features </a>
+                <a href="#" class="links"> <i class="fas fa-arrow-right"></i> products </a>
+                <a href="#" class="links"> <i class="fas fa-arrow-right"></i> categories </a>
+                <a href="#" class="links"> <i class="fas fa-arrow-right"></i> review </a>
+                <a href="#" class="links"> <i class="fas fa-arrow-right"></i> blogs </a>
+            </div>
+
+        </div>
+
+        <div class="credit"> created by <span> Mini Grocery Store </span> | all rights reserved </div>
+
+    </section>
+
+    <!-- footer section ends -->
+
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+    <!-- custom js file link  -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/Assets/JS/payment.js"></script>
+
 </body>
 </html>

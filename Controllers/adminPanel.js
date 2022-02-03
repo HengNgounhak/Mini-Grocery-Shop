@@ -3,26 +3,26 @@ const Product = require('../Models/products');
 const fs = require('fs');
 
 exports.adminPage = (req, res) => {
-    // if (req.session.userId) {
-    //     User.findOne({ _id: req.session.userId }).then(user => {
-    //         // console.log(user);
-    //         if (user) {
-    //             if (user.isAdmin == true) {
-    //                 res.render('adminPanel');
-    //             } else {
-    //                 res.render('homePage', { user: user });
-    //             }
+    if (req.session.userId) {
+        User.findOne({ _id: req.session.userId }).then(user => {
+            // console.log(user);
+            if (user) {
+                if (user.isAdmin == true) {
+                    res.render('adminPanel');
+                } else {
+                    res.redirect('/signin');
+                }
 
-    //         } else {
-    //             res.render('homePage', { user: null });
-    //         }
-    //     }).catch(err => {
-    //         console.log(err);
-    //     })
-    // } else {
-    //     res.render('signIn');
-    // }
-    res.render('adminPanel');
+            } else {
+                res.redirect('/signin');
+            }
+        }).catch(err => {
+            console.log(err);
+        })
+    } else {
+        res.redirect('/signin');
+    }
+    // res.render('adminPanel');
 }
 
 exports.addProduct = async (req, res) => {

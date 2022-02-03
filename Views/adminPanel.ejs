@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin</title>
+    <title>Mini Gocery Store</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -15,7 +15,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 
-    <script type="text/javascript" src="/Assets/JS/sort-table.js"></script>
     <link rel="stylesheet" href="/Assets/Icons/fontawesome-free-5.15.1-web/css/all.css">
 </head>
 
@@ -37,21 +36,6 @@
 
         <a href="/" class="logo"> <i class="fas fa-shopping-basket"></i> Mini Grocery Store</a>
 
-        <!-- <nav class="navbar">
-            <a href="#home">home</a>
-            <a href="#features">features</a>
-            <a href="#products">products</a>
-            <a href="#categories">categories</a>
-            <a href="#review">review</a>
-            <a href="#blogs">blogs</a>
-        </nav> -->
-
-        <div class="icons">
-            <!-- <div class="fas fa-bars" id="menu-btn"></div>
-            <div class="fas fa-search" id="search-btn"></div>
-            <div class="fas fa-shopping-cart" id="cart-btn"></div> -->
-            <div class="fas fa-user" id="login-btn" onclick="window.location.href = '/signin'"></div>
-        </div>
     </header>
     
     <div class="d-flex flex-row align-items-end mx-auto mt-5 w-100 justify-content-end position-relative" style="margin-top: 120px !important;">
@@ -69,7 +53,8 @@
                     <p class="m-0">All Products</p>
                     <div>
                         <button class="btn btn-primary m-0" data-toggle="modal"
-                            data-target="#exampleModalCenter">Add Products</button>
+                            data-target="#exampleModalCenter">Add Products
+                        </button>
                         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
                             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                             <form id="addForm" action="/addProduct" method="POST" enctype="multipart/form-data"
@@ -203,6 +188,12 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                <div class="d-flex justify-content-between mb-3 align-items-baseline">
+                    <p class="m-0">All User</p>
+                    <button class="btn btn-primary m-0" onclick="window.location.href = '/signup'">
+                       Add User
+                    </button>
+                </div>
                 <table class="table table-hover js-sort-table text-nowrap" id="demo2">
                     <thead>
                         <tr>
@@ -213,7 +204,7 @@
                         </tr>
                     </thead>
                     <tbody id="userTable">
-                        <tr>
+                        <!-- <tr>
                             <td>Hak</td>
                             <td>hak@gmail.com</td>
                             <td>Admin</td>
@@ -221,38 +212,48 @@
                                 <i class="fas fa-edit"></i>
                                 <i class="fas fa-trash-alt"></i>
                             </td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 </table>
             </div>
             <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                <table class="table table-hover js-sort-table" id="demo2">
-                    <thead>
-                        <tr>
-                            <th class="js-sort-number text-center" id="col1">Picture</th>
-                            <th id="col2">Name</th>
-                            <th id="col6">Category</th>
-                            <th class="text-center" id="col3">Qty</th>
-                            <th id="col4">Description</th>
-                            <th class="js-sort-date" id="col5">Date add</th>
-                            <th id="col6">Amount</th>
-                            <th class="text-center" id="col7">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="bodyTable">
-                        <tr>
-                            <th class="d-none" scope="row">1</th>
-                            <td><img src="/Assets/Image/Food&Drink/drink/milk.jpeg" alt="coca"></td>
-                            <td>CocaCola</td>
-                            <td>Drink</td>
-                            <td>1</td>
-                            <td>A special drink</td>
-                            <td>30/02/2022</td>
-                            <td>1$</td>
-                            <td>Success</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="overflow-auto">
+                    <table class="table table-hover js-sort-table" id="demo2">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th colspan="4">Product</th>
+                                <th>Total</th>
+                                <th>Date add</th>
+                                <th class="text-center" id="col7">Action</th>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>Name</td>
+                                <td>Price ($)</td>
+                                <td>Discount (%)</td>
+                                <td>Qty</td> 
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody id="purchaseTable">
+                            <!-- <tr>
+                                <td>CocaCola</td>
+                                <td>name</td>
+                                <td>price</td>
+                                <td>discount</td>
+                                <td>qty</td> 
+                                <td>11</td>
+                                <td>30/02/2022</td>
+                                <td class="text-center">
+                                    <i class="fas fa-trash-alt"></i>
+                                </td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <!--<div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
                 <table class="table table-hover js-sort-table" id="demo2">

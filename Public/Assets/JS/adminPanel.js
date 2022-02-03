@@ -1,53 +1,3 @@
-// var btnSave = document.getElementById("saveBtn");
-// btnSave.addEventListener("click", saveProduct);
-
-// async function saveProduct() {
-//   const product = {
-//     name: document.getElementById('name').value,
-//     qty: document.getElementById('qty').value,
-//     type: document.getElementById('type').value,
-//     unit: document.getElementById('unit').value,
-//     price: document.getElementById('price').value,
-//     discountPrice: document.getElementById('discountPrice').value,
-//     desription: document.getElementById('description').value,
-//     image: document.getElementById('inputFile').files[0],
-//     date: new Date().toISOString().split("T")[0],
-//   }
-//   // console.log(product)
-//   await axios.post('/addProduct', product, {
-//     headers: {
-//       'content-type': 'multipart/form-data'
-//     }
-//   }).then(result => {
-//         console.log(result);
-//         // if (result.success = true) {
-//         //     location.replace("http://localhost:3000/adminPanel");
-//         // }
-//     }).catch(err => {
-//         console.log(err);
-//     });
-// }
-
-async function saveProduct() {
-    const formData = new FormData(document.querySelector('form'));
-    let dataToSubmit = {};
-
-    for (var pair of formData.entries()) {
-        dataToSubmit[pair[0]] = pair[1];
-    }
-
-    // console.log(dataToSubmit);
-    // await axios.post('http://localhost:3000/addProduct', dataToSubmit)
-    //     .then(result => {
-    //         console.log(result);
-    //         // if (result.success = true) {
-    //         //     location.replace("http://localhost:3000/adminPanel");
-    //         // }
-    //     }).catch(err => {
-    //         console.log(err);
-    //     });
-}
-
 async function deleteProduct(id) {
     // console.log(id);
     await axios.delete('/deleteProduct/' + id)
@@ -81,20 +31,6 @@ async function updateProduct(id) {
             console.log(err);
         })
 }
-
-{/* <td class="text-nowrap text-center"><img src="/Assets/uploadImage/${element._id}" style="max-width:60px; max-height:60px"></td>
-                <td class="text-nowrap align-middle">${element.name}</td>
-                <td class="text-nowrap align-middle">${element.unit}</td>
-                <td class="text-nowrap align-middle">${element.qty}</td>
-                <td class="text-nowrap align-middle">${element.price}$</td>
-                <td class="text-nowrap align-middle">${element.discountPrice}</td>
-                <td class="text-nowrap align-middle">${element.type}</td>
-                <td class="text-nowrap text-center align-middle">${element.date}</td>
-                <td class="align-middle">${element.description}</td>
-                <td class="text-nowrap text-center align-middle">
-                    <i class="fas fa-edit" data-toggle="modal" data-target="#edit${element._id}"></i>
-                    <i class="fas fa-trash-alt" id="${element._id}" onclick="deleteProduct(this.id)></i>
-                </td> */}
 
 async function getProduct() {
     await axios.get('/getProduct')
@@ -218,13 +154,13 @@ async function getUser() {
             users.data.forEach(element => {
                 var childPost = document.createElement("tr");
                 childPost.setAttribute("class", element._id);
+                childPost.setAttribute("id", `trUser${element._id}`);
                 childPost.innerHTML = `
                     <td>${element.username}</td>
                     <td>${element.email}</td>
                     <td>${element.isAdmin ? "Admin": "Normal"}</td>
-                    <td>
-                        <i class="fas fa-edit"></i>
-                        <i class="fas fa-trash-alt"></i>
+                    <td class="text-center">
+                        <i class="fas fa-trash-alt" onclick="deleteUser('${element._id}')"></i>
                     </td>
                 `;
                 parentPost.appendChild(childPost);
@@ -235,5 +171,62 @@ async function getUser() {
         })
 }
 
+async function deleteUser(id) {
+    await axios.delete('/deleteUser/' + id).then((value) => {
+        if (value.data) {
+            document.getElementById('trUser' + id).remove();
+        }
+    })
+}
+
+async function getPurchase() {
+    await axios.get('/getPurchase')
+        .then(users => {
+            // render data from server
+            // console.log(posts)
+            let parentPost = document.getElementById("purchaseTable");
+            users.data.forEach(element => {
+                let listName = "";
+                let listPrice = "";
+                let listDiscount = "";
+                let listQty = "";
+                for(var i in element.products){
+                    listName += "<li>" + element.products[i].name + "</li>"
+                    listPrice += "<li>" + element.products[i].price + "</li>"
+                    listDiscount += "<li>" + element.products[i].discount + "</li>"
+                    listQty += "<li>" + element.products[i].qty + "</li>"
+                }
+                var childPost = document.createElement("tr");
+                childPost.setAttribute("class", element._id);
+                childPost.setAttribute("id", `trPurchase${element._id}`);
+                childPost.innerHTML = `
+                    <td>${element.username}</td>
+                    <td><ul class="list-unstyled m-0">${listName}</ul></td>
+                    <td><ul class="list-unstyled m-0">${listPrice}</ul></td>
+                    <td><ul class="list-unstyled m-0">${listDiscount}</ul></td>
+                    <td><ul class="list-unstyled m-0">${listQty}</ul></td>
+                    <td>${element.totalCost}</td>
+                    <td>${element.buyAt.split('T')}</td>
+                    <td class="text-center">
+                        <i class="fas fa-trash-alt" onclick="deletePurchase('${element._id}')"></i>
+                    </td>
+                `;
+                parentPost.appendChild(childPost);
+            })
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+}
+
+async function deletePurchase(id) {
+    await axios.delete('/deletePurchase/' + id).then((value) => {
+        if (value.data) {
+            document.getElementById('trPurchase' + id).remove();
+        }
+    })
+}
+
+getPurchase();
 getProduct();
 getUser();

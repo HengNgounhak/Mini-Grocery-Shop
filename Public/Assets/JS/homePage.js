@@ -223,8 +223,8 @@ function addToCart(id, name, price, discount) {
     data.forEach((element) => {
       totalPrice += ((element.price - (element.discount * element.price)/100) * element.qty)
     });
-    total.innerHTML = 'total : $' + totalPrice;
-    sessionStorage.setItem("totalCart", totalPrice);
+    total.innerHTML = 'total : $' + parseFloat(totalPrice).toFixed(2);
+    sessionStorage.setItem("totalCart", parseFloat(totalPrice).toFixed(2));
   } else {
     const newdata = [
       {
@@ -256,8 +256,8 @@ function addToCart(id, name, price, discount) {
     sessionStorage.setItem("Cart", JSON.stringify(newdata));
 
     totalPrice += (price - (discount * price)/100)
-    total.innerHTML = 'total : $' + totalPrice;
-    sessionStorage.setItem("totalCart", totalPrice);
+    total.innerHTML = 'total : $' + parseFloat(totalPrice).toFixed(2);
+    sessionStorage.setItem("totalCart", parseFloat(totalPrice).toFixed(2));
   }
   btnToast.click();
 }
@@ -274,8 +274,8 @@ function deleteItemAddToCart(id) {
         sessionStorage.setItem("Cart", JSON.stringify(data));
 
         totalPrice -= ((element.price - (element.discount * element.price)/100) * element.qty)
-        total.innerHTML = 'total : $' + totalPrice;
-        sessionStorage.setItem("totalCart", totalPrice);
+        total.innerHTML = 'total : $' + parseFloat(totalPrice).toFixed(2);
+        sessionStorage.setItem("totalCart", parseFloat(totalPrice).toFixed(2));
       }
     });
   }
@@ -307,8 +307,8 @@ function getAddToCart() {
     });
 
     const total = document.getElementById('totalCart');
-    total.innerHTML = 'total : $' + totalPrice;
-    sessionStorage.setItem("totalCart", totalPrice);
+    total.innerHTML = 'total : $' + parseFloat(totalPrice).toFixed(2);
+    sessionStorage.setItem("totalCart", parseFloat(totalPrice).toFixed(2));
   }
 }
 
@@ -370,6 +370,14 @@ async function getProduct() {
     .catch((err) => {
       console.log(err);
     });
+}
+
+async function logoutUser() {
+  await axios.post('/logout').then((value) => {
+      if (value.data) {
+          window.location.href = '/'
+      }
+  })
 }
 
 getProduct();

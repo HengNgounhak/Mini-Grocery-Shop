@@ -5,15 +5,11 @@ exports.signIn = (req, res) => {
     if (req.session.userId) {
         res.redirect('/');
     } else {
-        res.render('signIn', { error: false });
+        res.render('signIn', { message: null });
     }
 }
 exports.signUp = (req, res) => {
-    if (req.session.userId) {
-        res.redirect('/');
-    } else {
-        res.render('signUp');
-    }
+    res.render('signUp', { message: null });
 }
 
 exports.login = async(req, res) => {
@@ -22,19 +18,19 @@ exports.login = async(req, res) => {
     // Check if email is exist
     await User.find({ email: email }).then(result => {
         if (result != "") {
-            console.log(result + email + password);
             // if user exist, check given password with the encrypted password
             bcrypt.compare(password, result[0].password, function(err, passwordIsMatch) {
                 if (passwordIsMatch) {
                     // if password is correct, return success, with cookie save
-                    res.cookie('email', email, { expire: 3600 * 1000 });
-                    res.cookie('logged-time', new Date().toISOString(), { expire: 3600 * 1000 });
+                    res.cookie('email', email, { expire: 3600 * 1000 * 24 });
+                    res.cookie('logged-time', new Date().toISOString(), { expire: 3600 * 1000 * 24 });
                     // store user information to session
                     req.session.userId = result[0]._id;
+                    req.session.username = result[0].username;
                     res.redirect("/");
                 } else {
                     // else return fail
-                    res.render("signIn", { error: true, message: "Password incorrect" });
+                    res.render("signIn", { error: true, message: "Email and password are incorrect" });
                 }
             })
         } else {
@@ -59,7 +55,7 @@ exports.register = async(req, res) => {
         password: bcrypt.hashSync(password, salt),
         registerAt: date.toISOString()
     }).save().then(result => {
-        res.redirect("/signin");
+        res.redirect("/admin");
     }).catch(err => {
         res.render('signup', { message: "Signup fail, try again" });
     })
