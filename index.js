@@ -11,7 +11,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 const app = express();
-const routes = require("./routes/admin");
+const routes = require("./Routes/index");
 app.use(fileUpload({
     limits: { fileSize: 50 * 1024 * 1024 }
 }));
