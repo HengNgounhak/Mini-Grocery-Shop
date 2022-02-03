@@ -6,6 +6,10 @@ const fileUpload = require("express-fileupload");
 const path = require('path');
 const port = 5000;
 
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config()
+}
+
 const app = express();
 const routes = require("./routes/admin");
 app.use(fileUpload({
@@ -35,7 +39,7 @@ app.use(express.json());
 
 app.use(routes);
 
-mongoose.connect(process.env.MONGODB_URL)
+mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.cqgou.mongodb.net/Grocery?retryWrites=true&w=majority`)
     .then(result => {
         console.log("Db is connected");
         app.listen(port);
