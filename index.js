@@ -4,7 +4,7 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const fileUpload = require("express-fileupload");
 const path = require('path');
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config()
