@@ -325,7 +325,7 @@ async function getProduct() {
         childPost.innerHTML = `
           <img src="/Assets/uploadImage/${element._id}" alt="">
           <h3>${element.name}</h3>
-          <div class="price">$${element.price} </div>
+          <div class="price">$${element.price}   / ${element.unit}</div>
           <div class="stars">
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
@@ -350,7 +350,7 @@ async function getProduct() {
             childPost.innerHTML = `
                 <img src="/Assets/uploadImage/${element._id}" alt="">
                 <h3>${element.name}</h3>
-                <div class="price">$${element.price} </div>
+                <div class="price">$${element.price}   / ${element.unit}</div>
                 <div class="stars">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>

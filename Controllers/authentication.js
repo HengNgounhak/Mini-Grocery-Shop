@@ -9,7 +9,20 @@ exports.signIn = (req, res) => {
     }
 }
 exports.signUp = (req, res) => {
-    res.render('signUp', { message: null });
+    // res.render('signUp', { message: null });
+    if (req.session.userId) {
+        User.findOne({ _id: req.session.userId }).then(user => {
+            if (user) {
+                res.render('signUp', { message: null });
+            } else {
+                res.redirect('/signin');
+            }
+        }).catch(err => {
+            console.log(err);
+        })
+    } else {
+        res.redirect('/signin');
+    }
 }
 
 exports.login = async(req, res) => {

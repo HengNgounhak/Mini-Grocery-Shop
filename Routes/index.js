@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const homeController = require("../Controllers/Home");
-const authenController = require("../Controllers/Authentication");
-const adminPanelController = require("../Controllers/AdminPanel");
-const purchaseController = require("../Controllers/Purchases");
+const homeController = require("../Controllers/home");
+const authenController = require("../Controllers/authentication");
+const adminPanelController = require("../Controllers/adminPanel");
+const purchaseController = require("../Controllers/purchases");
 
 router.get('/', homeController.getHomePage);
 router.get('/product', homeController.getProductPage);
